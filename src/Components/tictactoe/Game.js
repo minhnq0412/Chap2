@@ -11,6 +11,7 @@ const Game = () => {
   return (
     <div>
       <Board cells={board} onClick={handleClick}></Board>
+    
     </div>
   );
 };
