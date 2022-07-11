@@ -1,7 +1,7 @@
 import "./App.css";
 //import { YoutubeList } from "./Components/youtube/YoutubeList";
-import Toggle from "./Components/toggle/Toggle";
-import Counter from "./Components/counter/Counter";
+// import Toggle from "./Components/toggle/Toggle";
+// import Counter from "./Components/counter/Counter";
 import Game from "./Components/tictactoe/Game";
 
 // JSX Javascript XML

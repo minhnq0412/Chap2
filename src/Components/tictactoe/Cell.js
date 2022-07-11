@@ -1,7 +1,11 @@
 import React from "react";
 
-const Cell = () => {
-  return <div className="game-cell"></div>;
+const Cell = ({ value, onClick }) => {
+  return (
+    <div className="game-cell" onClick={onClick}>
+      {value}
+    </div>
+  );
 };
 
 export default Cell;
