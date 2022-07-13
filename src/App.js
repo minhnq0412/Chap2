@@ -3,6 +3,7 @@ import "./App.css";
 // import Toggle from "./Components/toggle/Toggle";
 // import Counter from "./Components/counter/Counter";
 import Game from "./Components/tictactoe/Game";
+import Todo from "./Components/Todo/Todo";
 
 // JSX Javascript XML
 /**
@@ -14,7 +15,8 @@ import Game from "./Components/tictactoe/Game";
 function App() {
   return (
     <div>
-      <Game></Game>
+      {/* <Game></Game> */}
+      <Todo></Todo>
     </div>
   );
 }
