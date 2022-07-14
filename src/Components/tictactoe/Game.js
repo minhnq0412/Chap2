@@ -3,33 +3,41 @@ import { CaculatorWinner } from "../helpers";
 import Board from "./Board";
 import "./GameStyles.css";
 
+const initState = {
+  board: Array(9).fill(null),
+  xIsNext: true,
+};
+const reducer = (state, action) => {
+  console.log(state);
+  switch (action) {
+    case "CLICK":
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
 const Game = () => {
-  //   // const [board, setBoard] = useState(Array(9).fill(null));
-  //   // const [xIsNext, setXIsNext] = useState(true);
 
-  //   // const [state,dispatch] = useReducer()
-  //   const [state, setState] = useState({
-  //     board: Array(9).fill(null),
-  //     xIsNext: true,
-  //     name: "minhnq",
-  //   });
+  const [state, dispatch] = useReducer(reducer, initState);
+  const { board, xIsNext } = initState;
 
-  //   const winner = CaculatorWinner(state.board);
+  const winner = CaculatorWinner(board);
 
-  //   const handleClick = (index) => {
-  //     const boardCoppy = [...state.board];
-  //     if (winner || boardCoppy[index]) return;
-  //     boardCoppy[index] = state.xIsNext ? "X" : "O";
-  //     setState((pre) => ({
-  //       ...pre,
-  //       board: boardCoppy,
-  //       xIsNext: !pre.xIsNext,
-  //     }));
-  //   };
-  // console.log(state)
+  const handleClick = (index) => {
+    const boardCoppy = [...board];
+    if (winner || boardCoppy[index]) return;
+    dispatch({
+      type: "CLICK",
+      payload: {
+        index,
+      },
+    });
+  };
   return (
     <div style={{ padding: "0 20px" }}>
-      {/* <Board cells={state.board} onClick={handleClick}></Board> */}
+      <Board cells={state.board} onClick={handleClick}></Board>
     </div>
   );
 };

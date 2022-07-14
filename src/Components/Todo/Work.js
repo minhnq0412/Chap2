@@ -1,9 +1,12 @@
 import React from "react";
 
-const Work = ({ value, index }) => {
+const Work = ({ value, onClick }) => {
   return (
     <div>
-      <li> {value} &times;</li>
+      <li>
+        {value}
+        <span onClick={onClick}>&times;</span>
+      </li>
     </div>
   );
 };

@@ -1,37 +1,63 @@
 import React, { useReducer } from "react";
 import Work from "./Work";
 
-const initWork = {
+const initState = {
   work: "",
   works: [],
 };
+const SET_WORK = "set_work";
+const ADD_WORK = "add_work";
+const DELETE_WORK = "delete_work";
+
+const setWork = (payload) => ({
+  type: SET_WORK,
+  payload,
+});
+const addWork = (payload) => ({
+  type: ADD_WORK,
+  payload,
+});
+const deleteWork = (payload) => ({
+  type: DELETE_WORK,
+  payload,
+});
 
 const reducer = (state, action) => {
-    console.log(state.work)
-
-  switch (action) {
-    case "Add":
-        console.log(state.work)
-    //   state.works.includes(`${state.work}`) || state.works.push(state.work);
-      break;
-    // case "Delete":
-    //     state.works.includes(`${state.work}`) && state.works.push(state.work);
-    //   break;
+  console.log(action);
+  switch (action.type) {
+    case SET_WORK:
+      return {
+        ...state,
+        work: action.payload,
+      };
+    case ADD_WORK:
+      state.works.includes(state.work) || state.works.push(state.work);
+      return {
+        ...state,
+      };
+    case DELETE_WORK:
+      state.works.splice(action.payload, 1);
+      return {
+        ...state,
+      };
     default:
   }
 };
 
 const Todo = () => {
-
-  const [state, dispatch] = useReducer(reducer, initWork);
-
+  const [state, dispatch] = useReducer(reducer, initState);
+  const { work, works } = state;
   return (
     <div>
       <h3>TODO</h3>
-      <input placeholder="Enter TODO..."></input>
-      <button onClick={() => dispatch("Add")}>ADD</button>
-      {state.works.map((o, i) => (
-        <Work key={i} value={o.name} index={o.id} />
+      <input
+        placeholder="Enter TODO..."
+        value={work}
+        onChange={(e) => dispatch(setWork(e.target.value))}
+      ></input>
+      <button onClick={() => dispatch(addWork(""))}>ADD</button>
+      {works.map((o, i) => (
+        <Work key={i} value={o} onClick={() => dispatch(deleteWork(i))} />
       ))}
     </div>
   );

@@ -15,8 +15,8 @@ import Todo from "./Components/Todo/Todo";
 function App() {
   return (
     <div>
-      {/* <Game></Game> */}
-      <Todo></Todo>
+      <Game></Game>
+      {/* <Todo></Todo> */}
     </div>
   );
 }
