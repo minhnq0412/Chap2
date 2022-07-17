@@ -24,23 +24,6 @@ const reducer = (state, action) => {
   }
 };
 const Game = () => {
-<<<<<<< HEAD
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-  const winner = CaculatorWinner(board);
-  const handleClick = (index) => {
-    const boardCoppy = [...board];
-    if (winner || boardCoppy[index]) return;
-    boardCoppy[index] = xIsNext ? "X" : "O";
-    setBoard(boardCoppy);
-    setXIsNext(!xIsNext);
-
-  };
-  return (
-    <div>
-      <Board cells={board} onClick={handleClick}></Board>
-      {winner ? `Winner is ${xIsNext ? "O" : "X"}` : ""}
-=======
   const [state, dispatch] = useReducer(reducer, initState);
   const winner = CaculatorWinner(state.board);
   const handleClick = (index) => {
@@ -65,7 +48,6 @@ const Game = () => {
       <div style={{ padding: "0 20px" }}>
         <button onClick={handleReset}>Reset Game</button>
       </div>
->>>>>>> 1078009f527bc3613ba8bad28044850c763fcc84
     </div>
   );
 };
