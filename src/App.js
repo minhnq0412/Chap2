@@ -1,4 +1,6 @@
 import "./App.css";
+import Button from "./Components/button/Button";
+import Counter from "./Components/counter/Counter";
 //import { YoutubeList } from "./Components/youtube/YoutubeList";
 // import Toggle from "./Components/toggle/Toggle";
 // import Counter from "./Components/counter/Counter";
@@ -15,8 +17,11 @@ import Todo from "./Components/Todo/Todo";
 function App() {
   return (
     <div>
-      <Game></Game>
+      {/* <Game></Game> */}
       {/* <Todo></Todo> */}
+      {/* <Counter></Counter> */}
+      <Button className="button">Primary</Button>
+      <Button className="button--secondary">Secondary</Button>
     </div>
   );
 }

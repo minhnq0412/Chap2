@@ -8,36 +8,46 @@ const initState = {
   xIsNext: true,
 };
 const reducer = (state, action) => {
-  console.log(state);
-  switch (action) {
+  switch (action.type) {
     case "CLICK":
-      break;
+      const { board, xIsNext } = state;
+      const { index, winner } = action.payload;
+      const nextState = JSON.parse(JSON.stringify(state));
+      if (winner || board[index]) return state;
+      nextState.board[index] = xIsNext ? "X" : "O";
+      nextState.xIsNext = !xIsNext;
+      return nextState;
+    case "RESET":
+      return action.defaultData;
 
     default:
-      break;
   }
-  return state;
 };
 const Game = () => {
-
   const [state, dispatch] = useReducer(reducer, initState);
-  const { board, xIsNext } = initState;
-
-  const winner = CaculatorWinner(board);
-
+  const winner = CaculatorWinner(state.board);
   const handleClick = (index) => {
-    const boardCoppy = [...board];
-    if (winner || boardCoppy[index]) return;
     dispatch({
       type: "CLICK",
       payload: {
         index,
+        winner,
       },
+    });
+  };
+
+  const handleReset = () => {
+    dispatch({
+      type: "RESET",
+      defaultData: initState,
     });
   };
   return (
     <div style={{ padding: "0 20px" }}>
       <Board cells={state.board} onClick={handleClick}></Board>
+      <div style={{ padding: "0 20px" }}>
+        <button onClick={handleReset}>Reset Game</button>
+      </div>
     </div>
   );
 };
