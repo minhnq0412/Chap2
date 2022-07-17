@@ -15,6 +15,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     font-weight: bold;
     font-size: 40px;
+=======
+    font-size: 40px;
+    font-weight: bold;
+>>>>>>> 1078009f527bc3613ba8bad28044850c763fcc84
 }
