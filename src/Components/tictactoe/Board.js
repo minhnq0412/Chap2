@@ -2,12 +2,8 @@ import React from "react";
 import { winner } from "../helpers";
 import Cell from "./Cell";
 
-const Board = ({cells,onClick}) => {
-  //
-  // const cells = [null, null, null, "Y", "X", "X", null, null, null];
-  // console.log();
-  //console.log(props)
-
+const Board = ({ cells, onClick }) => {
+  console.log(cells);
   return (
     <div className="game-board">
       {cells.map((o, i) => (
