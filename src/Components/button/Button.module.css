@@ -9,10 +9,9 @@
     border: none;
     outline: none;
     margin: 10px;
-    &--secondary{
-        background-color: transparent;
-        color: #2979ff;
-        border: 1px solid currentColor;
-    }
 }
-
+.buttonSecondary{
+    background-color: transparent;
+    color: #2979ff;
+    border: 1px solid currentColor;
+}
