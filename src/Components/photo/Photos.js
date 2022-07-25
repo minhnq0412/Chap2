@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 //https://picsum.photos/v2/list
 //https://picsum.photos/v2/list?page=2&limit=100
 import "./photos.css";
 import axios from "axios";
 
-const getRandomPhotos = (page) => {
-  return axios
-    .get(`https://picsum.photos/v2/list?page=${page}&limit=8`)
-    .then((respone) => respone.data)
-    .catch((err) => {
-      console.log(err);
-    });
+const getRandomPhotos = async (page) => {
+  try {
+    const respone = await axios.get(
+      `https://picsum.photos/v2/list?page=${page}&limit=8`
+    );
+    return respone.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const Photos = () => {
   const [randomPhotos, setRandomPhoto] = useState([]);
   const [nextPage, setNextPage] = useState(1);
-  const [ip,setIp] = useState("");
-  useEffect(() => handleLoadMorePhotos, []);
-
-  const handleLoadMorePhotos = () => {
-    getRandomPhotos(nextPage).then((images) => {
-      setRandomPhoto(images);
-      setNextPage(nextPage + 1);
-    });
+  const handleLoadMorePhotos = useRef({});
+  handleLoadMorePhotos.current = async () => {
+    const images = await getRandomPhotos(nextPage);
+    const newPhotos = [...randomPhotos, ...images];
+    setRandomPhoto(newPhotos);
+    setNextPage(nextPage + 1);
   };
+  useEffect(() => handleLoadMorePhotos.current, []);
 
   return (
     <div>
@@ -41,7 +42,7 @@ const Photos = () => {
           ))}
       </div>
       <div style={{ textAlign: "center" }}>
-        <button className="btn-loadmore" onClick={handleLoadMorePhotos}>
+        <button className="btn-loadmore" onClick={handleLoadMorePhotos.current}>
           Load more
         </button>
       </div>

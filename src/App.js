@@ -12,6 +12,9 @@ import { ThemeProvider } from "styled-components";
 import Game from "./Components/tictactoe/Game";
 import Todo from "./Components/Todo/Todo";
 import Photos from "./Components/photo/Photos";
+import Timer from "./Components/Timer";
+import Header from "./Components/Header";
+import HackerNew from "./Components/news/HackerNew";
 
 // JSX Javascript XML
 /**
@@ -44,7 +47,10 @@ function App() {
           <Card></Card>
         </CardList>
       </ThemeProvider> */}
-      <Photos></Photos>
+      {/* <Photos></Photos> */}
+      {/* <Timer></Timer> */}
+      {/* <Header></Header> */}
+      <HackerNew></HackerNew>
     </div>
   );
 }
