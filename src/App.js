@@ -15,6 +15,7 @@ import Photos from "./Components/photo/Photos";
 import Timer from "./Components/Timer";
 import Header from "./Components/Header";
 import HackerNew from "./Components/news/HackerNew";
+import HackerNewWithReducer from "./Components/news/HackerNewWithReducer";
 
 // JSX Javascript XML
 /**
@@ -50,7 +51,8 @@ function App() {
       {/* <Photos></Photos> */}
       {/* <Timer></Timer> */}
       {/* <Header></Header> */}
-      <HackerNew></HackerNew>
+      {/* <HackerNew></HackerNew> */}
+      <HackerNewWithReducer></HackerNewWithReducer>
     </div>
   );
 }
