@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import lodash from "lodash";
+import useHackerNewApi from "../../hook/useHackerNewApi";
 // https://hn.algolia.com/api/v1/search?query=react;
 const styleInput = {
   borderColor: "rgb(229 231 235)",
@@ -12,35 +13,11 @@ const styleInput = {
   },
 };
 
-const HackerNew = () => {
-  const [hits, setHits] = useState([]);
-  const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [url, setUrl] = useState(
-    `https://hn.algolia.com/api/v1/search?query=${query}`
-  );
-  const [errorMessage, setErrorMessage] = useState();
-  const handleFetchData = useRef({});
-  handleFetchData.current = async () => {
-    setLoading(true);
-    try {
-      const respone = await axios.get(url);
-      setHits(respone.data?.hits || []);
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      setErrorMessage(`The error happend ${err}`);
-    }
-  };
-  //
+const HackerNewWithHook = () => {
+  const { query, setQuery, loading, errorMessage, setUrl, data } =
+    useHackerNewApi(`https://hn.algolia.com/api/v1/search?query=''`,{hits:[]});
 
-  // const handleUpdateQuery = lodash.debounce((e) => {
-  //   setQuery(e.target.value);
-  // }, 500);
-  useEffect(() => {
-    handleFetchData.current();
-  }, [url]);
-
+    console.log(data)
   return (
     <div
       style={{
@@ -83,8 +60,8 @@ const HackerNew = () => {
       {!loading && errorMessage && <p>{errorMessage}</p>}
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         {!loading &&
-          hits.length > 0 &&
-          hits.map((o, i) => {
+          data.hits.length > 0 &&
+          data.hits.map((o, i) => {
             if (!o.title || o.title.length <= 0) return null;
             return (
               <h3
@@ -104,4 +81,4 @@ const HackerNew = () => {
   );
 };
 
-export default HackerNew;
+export default HackerNewWithHook;

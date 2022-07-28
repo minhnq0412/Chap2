@@ -16,6 +16,12 @@ import Timer from "./Components/Timer";
 import Header from "./Components/Header";
 import HackerNew from "./Components/news/HackerNew";
 import HackerNewWithReducer from "./Components/news/HackerNewWithReducer";
+import StopWatch from "./Components/stopwatch/StopWatch";
+import Input from "./Components/input/Input";
+import TextAreaAutoResize from "./Components/textareaautoresize/TextAreaAutoResize";
+import DropDown from "./Components/dropdown/DropDown";
+import Blog from "./Components/blog/Blog";
+import HackerNewWithHook from "./Components/news/HackerNewWithHook";
 
 // JSX Javascript XML
 /**
@@ -52,7 +58,13 @@ function App() {
       {/* <Timer></Timer> */}
       {/* <Header></Header> */}
       {/* <HackerNew></HackerNew> */}
-      <HackerNewWithReducer></HackerNewWithReducer>
+      {/* <HackerNewWithReducer></HackerNewWithReducer> */}
+      {/* <StopWatch></StopWatch> */}
+      {/* <Input></Input> */}
+      {/* <TextAreaAutoResize></TextAreaAutoResize> */}
+      <DropDown></DropDown>
+      {/* <Blog></Blog> */}
+      {/* <HackerNewWithHook></HackerNewWithHook> */}
     </div>
   );
 }
