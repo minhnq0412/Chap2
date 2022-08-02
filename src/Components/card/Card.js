@@ -25,7 +25,7 @@ const CardContent = styled.div`
   bottom: 0;
   transform: translate(-50%, 50%);
   background-color: white;
-  z-index: 10;
+  z-index: 2;
   border-radius: 20px;
   padding: 20px;
 `;
@@ -93,29 +93,22 @@ const Card = (props) => {
   return (
     <StyledCard>
       <CardImage>
-        <CardImg
-          alt=""
-          src="https://cdn.dribbble.com/users/2400293/screenshots/15883991/media/c5a6d6098f4ec6a0ce1b38909d82a494.png?compress=1&resize=840x630&vertical=top"
-        />
+        <CardImg alt="" src={props.image} />
       </CardImage>
-      <CardContent>
+      <CardContent onClick={props.onClick}>
         <CardTop>
           <CardUser>
-            <UserAvatar
-              src="https://cdn.dribbble.com/users/2400293/screenshots/15883991/media/c5a6d6098f4ec6a0ce1b38909d82a494.png?compress=1&resize=840x630&vertical=top"
-              alt=""
-            />
-            <UserName>@minhnq</UserName>
+            <UserAvatar src={props.image_avatar} alt="" />
+            <UserName>{props.author}</UserName>
           </CardUser>
           <CardMeta>
             <img src="/icon-heart.png" alt="heart" style={{ width: "24px" }} />
-
-            <span>256</span>
+            <span>{props.heart}</span>
           </CardMeta>
         </CardTop>
         <CardFooter>
-          <CardTittle>Perfect</CardTittle>
-          <CardAmount secondary={props.secondary}>12000 PSL</CardAmount>
+          <CardTittle>{props.title}</CardTittle>
+          <CardAmount secondary={props.secondary}>{props.viewer}</CardAmount>
         </CardFooter>
       </CardContent>
     </StyledCard>

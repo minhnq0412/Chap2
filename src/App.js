@@ -22,18 +22,18 @@ import TextAreaAutoResize from "./Components/textareaautoresize/TextAreaAutoResi
 import DropDown from "./Components/dropdown/DropDown";
 import Blog from "./Components/blog/Blog";
 import HackerNewWithHook from "./Components/news/HackerNewWithHook";
-
+import SideBarMenu from "./Components/sidebarmenu/SideBarMenu";
+import { useState } from "react";
+import useClickOutSide from "./hook/useClickOutSide";
+import Create from "./Components/forminput/Create";
+import Practice from "./Components/ivt/Practice";
 // JSX Javascript XML
 /**
  *
  *
  */
 // Parent Component
-const theme = {
-  colors: {
-    blue: "#2979ff",
-  },
-};
+
 
 function App() {
   return (
@@ -43,17 +43,6 @@ function App() {
       {/* <Counter></Counter> */}
       {/* <Button>Primary</Button>
       <Button secondary>Secondary</Button> */}
-      {/* <ThemeProvider theme={theme}>
-        <GlobalStyles></GlobalStyles>
-        <CardList>
-          <Card2 secondary></Card2>
-          <Card2></Card2>
-          <Card2></Card2>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-        </CardList>
-      </ThemeProvider> */}
       {/* <Photos></Photos> */}
       {/* <Timer></Timer> */}
       {/* <Header></Header> */}
@@ -62,9 +51,26 @@ function App() {
       {/* <StopWatch></StopWatch> */}
       {/* <Input></Input> */}
       {/* <TextAreaAutoResize></TextAreaAutoResize> */}
-      <DropDown></DropDown>
       {/* <Blog></Blog> */}
       {/* <HackerNewWithHook></HackerNewWithHook> */}
+
+      {/* <button
+        style={{
+          display: "inline-block",
+          margin: "12px",
+          padding: "12px",
+          borderRadius: "0.25rem",
+          color: "white",
+          backgroundColor: "green",
+        }}
+        onClick={() => setShow(true)}
+      >
+        Show menu
+      </button>
+
+      <SideBarMenu show={show} ref={nodeRef}></SideBarMenu>
+      <DropDown></DropDown> */}
+      <Practice></Practice>
     </div>
   );
 }

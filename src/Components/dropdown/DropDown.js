@@ -1,23 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import useClickOutSide from "../../hook/useClickOutSide";
 
 const DropDown = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const dropdownRef = useRef();
-
-  useEffect(() => {
-    const handleClickOutDropdown = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutDropdown);
-    return () => {
-      document.removeEventListener("click", handleClickOutDropdown);
-    };
-  }, []);
+  const { nodeRef, show, setShow } = useClickOutSide();
   return (
     <div
-      ref={dropdownRef}
+      ref={nodeRef}
       style={{
         position: "relative",
         width: "100%",
@@ -25,7 +13,7 @@ const DropDown = () => {
       }}
     >
       <div
-        onClick={() => setShowDropdown(!showDropdown)}
+        onClick={() => setShow(!show)}
         style={{
           backgroundColor: "white",
           padding: "20px",
@@ -38,7 +26,7 @@ const DropDown = () => {
       >
         Selected
       </div>
-      {showDropdown && (
+      {show && (
         <div
           style={{
             backgroundColor: "white",
