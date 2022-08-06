@@ -17,7 +17,7 @@ import Header from "./Components/Header";
 import HackerNew from "./Components/news/HackerNew";
 import HackerNewWithReducer from "./Components/news/HackerNewWithReducer";
 import StopWatch from "./Components/stopwatch/StopWatch";
-import Input from "./Components/input/Input";
+import Form from "./Components/form/Form";
 import TextAreaAutoResize from "./Components/textareaautoresize/TextAreaAutoResize";
 import DropDown from "./Components/dropdown/DropDown";
 import Blog from "./Components/blog/Blog";
@@ -27,6 +27,11 @@ import { useState } from "react";
 import useClickOutSide from "./hook/useClickOutSide";
 import Create from "./Components/forminput/Create";
 import Practice from "./Components/ivt/Practice";
+import MovieSearchApp from "./Components/movie/MovieSearchApp";
+import SignUpForm from "./Components/form/SignUpForm";
+import SignUpFormV2 from "./Components/form/SignUpFormV2";
+import SignUpFormFinal from "./Components/form/SignUpFormFinal";
+import SignUpFormHook from "./Components/form/SignUpFormHook";
 // JSX Javascript XML
 /**
  *
@@ -34,8 +39,9 @@ import Practice from "./Components/ivt/Practice";
  */
 // Parent Component
 
-
 function App() {
+  const { show, setShow, nodeRef } = useClickOutSide("button");
+
   return (
     <div>
       {/* <Game></Game> */}
@@ -70,7 +76,11 @@ function App() {
 
       <SideBarMenu show={show} ref={nodeRef}></SideBarMenu>
       <DropDown></DropDown> */}
-      <Practice></Practice>
+      {/* <Form></Form> */}
+      {/* <Practice></Practice> */}
+      {/* <MovieSearchApp></MovieSearchApp> */}
+      {/* <SignUpFormFinal></SignUpFormFinal> */}
+      <SignUpFormHook></SignUpFormHook>
     </div>
   );
 }
